@@ -57,7 +57,7 @@ class _AuthScreenState extends State<AuthScreen> {
                     ? GlobalVar.backColor
                     : GlobalVar.greybackColor,
                 title: const Text(
-                  "Welcome! Sign up",
+                  "Create Account",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 leading: Radio(
@@ -109,7 +109,7 @@ class _AuthScreenState extends State<AuthScreen> {
                     ? GlobalVar.backColor
                     : GlobalVar.greybackColor,
                 title: const Text(
-                  "Sign-in",
+                  "Welcome Back !",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 leading: Radio(

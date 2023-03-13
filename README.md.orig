@@ -19,5 +19,11 @@ samples, guidance on mobile development, and a full API reference.
 # amazon_clone_app
 an amazon clone app using flutter, nodejs and mongoose
 
-for now, I've got only the git repostory settup
+For now, I've got only the git repostory settup
+
+The User landing page:
+This page contains both the sign up and sign-in sections, each of which is triggered
+by the radio button attached to the title field
+Information entered in either section is saved if user switches sections
+
 >>>>>>> d3fb8e18b4989305188c4ddb689dbbe6d2be8ce9
