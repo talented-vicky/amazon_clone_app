@@ -1,21 +1,24 @@
 const User = require("../models/user")
+const bcrypt = require('bcryptjs')
 
 
 exports.getUser = async (req, res, next) => {    
     try {
-        // const {name, email, password} = req.body
-        const userEmail = req.body.email;
-        const userName = req.body.name;
-        const userPassword = req.body.password;
-    
+        const {name, email, password} = req.body
+
+        const hashedPass = await bcrypt.hash(password, 10);
+        if(!hashedPass){
+            console.log('Failed to encrypt password')
+        }
+
         // const existingUser = await User.findOne({ email })
         const existingUser = await User.findOne({email: userEmail})
         if(existingUser){
-            return res.status(400).json({msg: "User with this email already exist"})
+            return res.status(400).json({msg: "User with this email already exists"})
         }
         //create user
         const user = new User({
-            name: userName, email: userEmail, password: userPassword
+            name, email, password: hashedPass
         })
         await user.save()
         res.json(user)

@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
-const authRoute = require('./routes/auth');
+const authRoute = require('./routes/user');
 
 require('dotenv').config()
 const PORT_NAME = process.env.PORT_NAME;
@@ -9,7 +9,8 @@ const URI_STRING = process.env.URI_STRING;
 
 const app = express();
 
-app.use(express.json())
+app.use(express.json()) 
+// passes incoming request with json payload
 app.use(authRoute);
 
 

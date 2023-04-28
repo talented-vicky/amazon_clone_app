@@ -17,7 +17,7 @@ const userModel = new Schema({
                 const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
                 return val.match(regex)
             },
-            message: "email error" //only runs if validator above is false
+            message: "email invalid" //only runs if validator above is false
         }
     },
     password: {
