@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../../constants/global_var.dart';
-import '../../../constants/custom_textfield.dart';
-import '../../../constants/custom_button.dart';
+import '../../../utils/constants/global_var.dart';
+import '../../../utils/widgets/custom_textfield.dart';
+import '../../../utils/widgets/custom_button.dart';
 
-enum AuthEnum { signin, signup }
+enum AuthEnum { signin, signup } // an object whose key and values are same
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
@@ -16,6 +16,7 @@ class AuthScreen extends StatefulWidget {
 
 class _AuthScreenState extends State<AuthScreen> {
   AuthEnum _auth = AuthEnum.signup;
+  // variable is _auth and data type is AuthEnum, an enum object
   // hence this is the default (what we see on page landing)
 
   final _signUpKey = GlobalKey<FormState>();
@@ -31,6 +32,12 @@ class _AuthScreenState extends State<AuthScreen> {
     _emailCtrl.dispose();
     _passwordCtrl.dispose();
     _nameCtrl.dispose();
+    // dispose method helps release the memory allocated to variables when
+    // state object is removed,
+
+    // for example, if using a stream in my application then I have to release
+    // memory allocated to the stream controller. Otherwise, my app may get a
+    // warning from the PlayStore and AppStore about memory leakage.
   }
 
   @override
@@ -142,7 +149,7 @@ class _AuthScreenState extends State<AuthScreen> {
                             hintTxt: "Password",
                           ),
                           // since my controllers are the same I always keep
-                          // user input if user acoount radio action is changed
+                          // user input if user account radio action is changed
                           const SizedBox(
                             height: 15,
                           ),
