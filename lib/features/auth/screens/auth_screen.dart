@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../utils/constants/global_var.dart';
 import '../../../utils/widgets/custom_textfield.dart';
 import '../../../utils/widgets/custom_button.dart';
+import 'package:amazon_app_clone/features/auth/services/auth_service.dart';
 
 enum AuthEnum { signin, signup } // an object whose key and values are same
 
@@ -25,6 +26,7 @@ class _AuthScreenState extends State<AuthScreen> {
   final TextEditingController _emailCtrl = TextEditingController();
   final TextEditingController _passwordCtrl = TextEditingController();
   final TextEditingController _nameCtrl = TextEditingController();
+  final AuthService authServ = AuthService();
 
   @override
   void dispose() {
@@ -38,6 +40,14 @@ class _AuthScreenState extends State<AuthScreen> {
     // for example, if using a stream in my application then I have to release
     // memory allocated to the stream controller. Otherwise, my app may get a
     // warning from the PlayStore and AppStore about memory leakage.
+  }
+
+  void signIn() {
+    authServ.signIn(
+        context: context,
+        email: _emailCtrl.text,
+        password: _passwordCtrl.text,
+        name: _nameCtrl.text);
   }
 
   @override
@@ -106,7 +116,13 @@ class _AuthScreenState extends State<AuthScreen> {
                           const SizedBox(
                             height: 15,
                           ),
-                          CustomButton(txt: "Sign up", onTap: () {}),
+                          CustomButton(
+                              txt: "Sign up",
+                              onTap: () {
+                                if (_signUpKey.currentState!.validate()) {
+                                  signIn();
+                                }
+                              }),
                           const SizedBox(height: 5)
                         ],
                       )),

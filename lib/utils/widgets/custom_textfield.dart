@@ -11,8 +11,11 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-        validator: (value) {
-          //
+        validator: (val) {
+          if (val == null || val.isEmpty) {
+            return 'Enter $hintTxt';
+          }
+          return null; // I am telling the system there is no error
         },
         controller: control,
         decoration: InputDecoration(

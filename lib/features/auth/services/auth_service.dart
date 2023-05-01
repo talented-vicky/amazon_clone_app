@@ -19,7 +19,7 @@ class AuthService {
     try {
       User user = User(
           id: '', email: '', password: '', address: '', type: '', token: '');
-      http.Response response = await http.post('$uri/api/user',
+      http.Response response = await http.post(Uri.parse('$uri/api/user'),
           headers: <String, String>{
             'Content-Type': 'application/json;charset=UTF-8'
           },

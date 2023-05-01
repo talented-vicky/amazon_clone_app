@@ -2,7 +2,10 @@ const User = require("../models/user")
 const bcrypt = require('bcryptjs')
 
 
-exports.getUser = async (req, res, next) => {    
+exports.getUser = async (req, res, next) => {  
+    res.header("Access-Control-Allow-Origin", "*")  
+    res.header("Access-Control-Allow-Methods", "GET,PUT,PATCH,POST,DELETE")
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-with, Content-Type, Accept")
     try {
         const {name, email, password} = req.body
 
